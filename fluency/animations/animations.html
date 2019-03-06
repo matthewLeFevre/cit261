@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://rawcdn.githack.com/BlueRim/CSS-Config-File/d61c1d40804306886017fadba6bcd651e2b80617/config.css">
+  <title>Document</title>
+</head>
+<style>
+  header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+  }
+  header > ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+  }
+  header > ul a {
+    transition: all 250ms ease;
+    padding: .5em;
+    color: var(--light);
+    font-size: var(--mid);
+  }
+  header > ul a:hover {
+    color: var(--aqua);
+  }
+
+  .banner {
+    height: calc(70vh);
+    background: linear-gradient(var(--dark), var(--dark) 50%, var(--red));
+    background-size: 100% 200%;
+  }
+
+  .banner__animated {
+    animation: gradient 15s ease infinite;
+  }
+
+  .banner__btn {
+    cursor: pointer;
+    border: none;
+    font-size: var(--lrg);
+    padding: .5em 1em;
+    margin-top: 1em;
+    background-color: var(--blue);
+    color: var(--light);
+    font-weight: 900;
+    transition: background-color 300ms ease;
+  }
+  .banner__btn__transform {
+    animation: transform 15s ease infinite;
+    
+  }
+  .banner__btn:hover {
+    background-color: var(--aqua);
+  }
+
+  @keyframes transform {
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(180deg);}
+    100%{transform: rotate(0deg);}
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: top;
+    }
+    50% {
+      background-position: bottom;
+    }
+    100% {
+      background-position: top;
+    }
+  }
+  .banner__section {
+    height: calc(100% - 75px);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner__text {
+    text-align: center;
+  }
+  .banner__text h2 {
+    font-size: var(--x2lrg);
+    font-family: var(--sans-serif);
+    font-weight: 900;
+    margin-bottom: 0;
+  }
+  .banner__text p {
+    color: var(--light);
+    font-size: var(--mid);
+  }
+
+  main {
+    height: 100vh;
+  }
+
+  .media__container {
+    height: 100vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .media__container video {
+    min-width: 300px;
+    width: 60vw;
+    display: block;
+    margin-bottom: 1em;
+  }
+  .media__container audio {
+    display: block;
+    margin-bottom: 1em;
+  }
+  .media__container canvas {
+    display: block;
+    margin-bottom: 1em;
+    border: solid 1px var(--blue);
+  }
+</style>
+<body>
+  <section class="banner">
+    <header>
+      <h1>Blunderly</h1>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Login</a></li>
+        <li><a href="#">Signup</a></li>
+      </ul>
+    </header>
+    <div class="banner__section">
+      <div class="banner__text">
+        <h2 class="lrg">Blunderly</h2>
+        <p>A bungling Blooper</p>
+        <button type="button" class="banner__btn">Start animation</button>
+      </div>
+    </div>
+  </section>
+  <section class="media__container">
+    <div>
+      <h1>Video Audio and Canvas Tags</h1>
+      <!-- Video Courtesy of w3Schools https://www.w3schools.com/html/html5_video.asp -->
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+      <!-- Aduio Courtesy 33Schools https://www.w3schools.com/tags/horse.ogg-->
+      <audio controls src="https://www.w3schools.com/tags/horse.ogg"></audio>
+      <canvas></canvas>
+    </div>
+    
+  </section>
+  <script>
+    document.getElementsByClassName('banner__btn')[0].addEventListener('click', animate);
+    function animate() {
+      document.getElementsByClassName("banner")[0].classList.toggle("banner__animated");
+      document.getElementsByClassName('banner__btn')[0].classList.toggle("banner__btn__transform")
+    }
+  </script>
+</body>
+</html>
