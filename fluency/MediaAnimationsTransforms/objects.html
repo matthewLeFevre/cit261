@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+      /**
+     * Objects are entities that contain information
+     * the information they contain can by any type
+     * including other objects. Objects in other
+     * languages are always instantiated from a class
+     * in javascript an object can be made in the folowing ways
+     */
+
+    let myObject = {};
+    let myNewObject = new Object();
+
+    // there are probably other was to create them
+    // but these are two off the top of my head
+
+    // here is a class
+
+    class Person {
+      constructor({eyeColor, hairColor, personName}) {
+        this.eyeColor = eyeColor;
+        this.hairColor = hairColor;
+        this.personName = personName;
+      }
+
+      // about is a method that can be used on a Person object
+      about() {
+        return console.log(`${this.personName} has ${this.eyeColor} color eyes and ${this.hairColor} color hair.`);
+      }
+    }
+
+    //  lets instatiate this object
+    const myAttributes = {
+      eyeColor: "brown",
+      hairColor: "brown",
+      personName: "Matthew"
+    }
+
+    const me = new Person(myAttributes);
+
+    // Here is a little something about me 
+
+    me.about();
+
+    // What if we want to specify an object that inherits from
+
+    class Worker extends Person {
+      constructor({eyeColor, hairColor, personName}, occupation) {
+        super({eyeColor, hairColor, personName});
+        this.occupation = occupation;
+      }
+      // we can overwrite the methods of the parent
+      about() {
+        return console.log(`${this.personName} is a ${this.occupation} and has ${this.hairColor} color hair.`);
+      }
+    }
+
+    const bill = new Worker({eyeColor:"blue", hairColor:"Blonde", personName:"Bill"}, "Barber");
+
+    bill.about();
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
