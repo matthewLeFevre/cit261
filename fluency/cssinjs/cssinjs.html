@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  *,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.gallery {
+  padding: 1em 0;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, 100%);
+  grid-auto-rows: 250px;
+  grid-auto-flow: row;
+  justify-content: center;
+  width: 100%;
+}
+@media screen and (min-width: 550px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, 250px);
+  }
+}
+@media screen and (min-width: 800px) {
+  .gallery {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.gallery__item {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.pop_up {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.gallery__item:hover > .gallery__content {
+  opacity: 1;
+}
+
+.gallery__content {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  color: white;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+.gallery__img {
+  display: block;
+  width: 600px;
+}
+
+.gallery__btn {
+  padding: .5em 1.75em;
+  border: solid 2px #FFB300;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #FFB300;
+  font-weight: 700;
+}
+
+.selected-image {
+  height: 60vw;
+}
+
+  </style>
+</head>
+<body>
+  
+	<section class="gallery">
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/324658/pexels-photo-324658.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/993868/pexels-photo-993868.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/995301/pexels-photo-995301.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&h=350">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/828381/pexels-photo-828381.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/933588/pexels-photo-933588.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/849810/pexels-photo-849810.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/573263/pexels-photo-573263.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/935942/pexels-photo-935942.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+		<article class="gallery__item">
+			<img src="https://images.pexels.com/photos/238631/pexels-photo-238631.jpeg?auto=compress&cs=tinysrgb&h=350" class="gallery__img">
+		</article>
+		
+	</section>
+<script>
+const items = document.getElementsByClassName('gallery__item');
+for(let i = 0; i < items.length; i++) {
+	items[i].addEventListener('click',function() {
+		if(items[i].style.position === "relative" || items[i].style.position === "") {
+			items[i].style.position = "absolute";
+			items[i].style.backgroundColor = "rgba(0, 0, 0, .7)";
+			items[i].style.zIndex = "10";
+			items[i].classList.add("pop_up");
+		} else {
+			items[i].style.position = "relative";
+			items[i].classList.remove("pop_up");
+			items[i].style.backgroundColor = "transparent";
+			items[i].style.zIndex = "0";
+		}
+		
+	})
+}
+</script>
+</body>
+</html>
